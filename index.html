@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDEJT Manhiça - Serviço Distrital de Educação, Juventude e Tecnologia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1rem;
+            color: #0a4a6b;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* ESPAÇO PARA O EMBLEMA NACIONAL - IMAGEM LOCAL */
+        .logo-img {
+            width: 65px;
+            height: 65px;
+            background-image: url('imagens/emblema.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 2px solid #e67e22;
+        }
+
+        .logo-text h1 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .logo-text p {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #e67e22;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #0a4a6b;
+            cursor: pointer;
+        }
+
+        /* ==================== HERO / BANNER SECTION ==================== */
+        /* Banner separado sem texto sobreposto - imagem pura */
+        .hero-banner {
+            width: 100%;
+            height: 500px;
+            background-image: url('imagens/frontal.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px;
+        }
+
+        /* Seção de boas-vindas separada (texto abaixo da imagem) */
+        .welcome-section {
+            background: linear-gradient(135deg, #0a4a6b, #063a54);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .welcome-section .lema {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(230, 126, 34, 0.3);
+            border-radius: 10px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .welcome-section p {
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: #0a4a6b;
+        }
+
+        .btn-primary:hover {
+            background: #063a54;
+        }
+
+        /* ==================== SECTIONS ==================== */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #e67e22;
+        }
+
+        .bg-light {
+            background-color: #ecf0f1;
+        }
+
+        /* ==================== STATS CARDS ==================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0a4a6b, #063a54);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .school-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .school-cat {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .school-cat h4 {
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+
+        .school-cat .number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0a4a6b;
+        }
+
+        /* ==================== ABOUT ==================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .director-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .director-info h4 {
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-box i {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 12px;
+        }
+
+        .info-box h3 {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* ==================== REPARTIÇÕES ==================== */
+        .reparticoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .reparticao-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .reparticao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            background: linear-gradient(135deg, #0a4a6b, #063a54);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card-icon i {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #e67e22;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* ==================== MODAL ==================== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 15px;
+            overflow-y: auto;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #0a4a6b, #063a54);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .modal-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-body h4 {
+            color: #e67e22;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        /* ==================== UGEA e SIC ==================== */
+        .special-section {
+            background: #0a4a6b;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .special-section h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .special-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .special-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .special-card i {
+            font-size: 1.8rem;
+            color: #e67e22;
+            margin-bottom: 12px;
+        }
+
+        .special-card h4 {
+            color: #0a4a6b;
+            margin-bottom: 8px;
+        }
+
+        .special-card p {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        /* ==================== ANÚNCIOS ==================== */
+        .anuncios-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .anuncio {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e67e22;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .anuncio h4 {
+            color: #0a4a6b;
+            margin-bottom: 5px;
+        }
+
+        .anuncio-date {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .ver-mais {
+            background: none;
+            border: none;
+            color: #e67e22;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* ==================== CALENDAR ==================== */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .calendar-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .calendar-card i {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .calendar-card h4 {
+            color: #0a4a6b;
+        }
+
+        /* ==================== CONTACTO ==================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+        }
+
+        .contact-info i {
+            width: 25px;
+            color: #e67e22;
+        }
+
+        .contact-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .map-placeholder {
+            background: #bdc3c7;
+            height: 250px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: #063a54;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            margin-bottom: 35px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-col a:hover {
+            color: #e67e22;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ==================== BACK TO TOP ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #0a4a6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #e67e22;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-banner {
+                height: 300px;
+                margin-top: 80px;
+            }
+
+            .welcome-section {
+                padding: 40px 0;
+            }
+
+            .welcome-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-section .lema {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+
+            .info-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .school-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-banner {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <div class="logo-img"></div>
+            <div class="logo-text">
+                <h1>Serviço Distrital de Educação,<br>Juventude e Tecnologia da Manhiça</h1>
+                <p>SDEJT - Manhiça | Compromisso com o Desenvolvimento Sustentável</p>
+            </div>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#about">Institucional</a></li>
+                <li><a href="#reparticoes">Repartições</a></li>
+                <li><a href="#anuncios">Anúncios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BANNER DA IMAGEM FRONTAL - SEM TEXTO SOBREPOSTO -->
+<div class="hero-banner" id="home"></div>
+
+<!-- SEÇÃO DE BOAS-VINDAS (TEXTO SEPARADO) -->
+<section class="welcome-section">
+    <div class="container">
+        <h2>Bem-vindo ao SDEJT da Manhiça</h2>
+        <div class="lema">
+            "Educação, Investigação e Cultura: Vectores Fundamentais para o Desenvolvimento Sustentável"
+        </div>
+        <p>Lema do Ano Lectivo 2026</p>
+        <a href="#reparticoes" class="btn btn-primary">Conheça as Repartições</a>
+    </div>
+</section>
+
+<!-- STATS SECTION -->
+<section id="stats">
+    <div class="container">
+        <div class="section-title">
+            <h2>Estatísticas do Distrito da Manhiça</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>113</h3>
+                <p>Total de Escolas</p>
+            </div>
+            <div class="stat-card">
+                <h3>78</h3>
+                <p>Escolas Primárias (1ª a 6ª)</p>
+            </div>
+            <div class="stat-card">
+                <h3>18</h3>
+                <p>Escolas Básicas (1ª a 9ª)</p>
+            </div>
+            <div class="stat-card">
+                <h3>13</h3>
+                <p>Escolas Secundárias (7ª a 12ª)</p>
+            </div>
+        </div>
+        
+        <div class="school-categories">
+            <div class="school-cat">
+                <h4>Escolas Primárias</h4>
+                <div class="number">77 Públicas</div>
+                <div class="number" style="font-size: 1rem;">1 Privada</div>
+                <p>Total: 78 escolas</p>
+            </div>
+            <div class="school-cat">
+                <h4>Ensino Básico</h4>
+                <div class="number">18</div>
+                <p>Escolas (1ª a 9ª classe)</p>
+            </div>
+            <div class="school-cat">
+                <h4>Ensino Secundário</h4>
+                <div class="number">13</div>
+                <p>Escolas (7ª a 12ª classe)</p>
+            </div>
+            <div class="school-cat">
+                <h4>Ensino Superior</h4>
+                <div class="number">2 Institutos Médios</div>
+                <div class="number">1 Instituto Superior</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INSTITUCIONAL -->
+<section id="about" class="bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sobre o SDEJT Manhiça</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>O Serviço Distrital de Educação, Juventude e Tecnologia da Manhiça (SDEJT) é uma instituição pública localizada na Vila Municipal da Manhiça, Província de Maputo, responsável pela coordenação, supervisão e implementação das políticas educacionais, programas de juventude e iniciativas tecnológicas no distrito.</p>
+                <p>Nossa estrutura organizacional conta com cinco repartições especializadas que trabalham integradas para garantir serviços de qualidade à comunidade da Manhiça.</p>
+                
+                <div class="director-info">
+                    <h4><i class="fas fa-user-tie"></i> Director do SDEJT</h4>
+                    <p><strong>Nuno Placido</strong> - Director do Serviço Distrital de Educação, Juventude e Tecnologia da Manhiça</p>
+                </div>
+            </div>
+            <div class="info-boxes">
+                <div class="info-box">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Educação</h3>
+                    <p>Coordenação de 113 escolas no distrito</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Juventude</h3>
+                    <p>Programas de capacitação e desenvolvimento juvenil</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Tecnologia</h3>
+                    <p>Inovação e inclusão digital nas escolas</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-gavel"></i>
+                    <h3>SIC - Jurídico</h3>
+                    <p>Assessoria legal e conformidade</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REPARTIÇÕES -->
+<section id="reparticoes">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nossas Repartições</h2>
+            <p>Clique em "Saber mais" para conhecer detalhadamente as actividades de cada repartição</p>
+        </div>
+
+        <div class="reparticoes-grid">
+            <!-- Repartição 1 - Educação Geral -->
+            <div class="reparticao-card" data-reparticao="educacao-geral">
+                <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                <div class="card-content">
+                    <h3>Repartição de Educação Geral</h3>
+                    <p><strong>Chefe: Prof. Doutor David Zefanias Chonane</strong></p>
+                    <p>Coordenação de 113 escolas: Primárias (1ª-6ª), Básicas (1ª-9ª) e Secundárias (7ª-12ª)</p>
+                    <span class="card-link">Saber mais →</span>
+                </div>
+            </div>
+
+            <!-- Repartição 2 - Recursos Humanos -->
+            <div class="reparticao-card" data-reparticao="recursos-humanos">
+                <div class="card-icon"><i class="fas fa-users-gear"></i></div>
+                <div class="card-content">
+                    <h3>Repartição de Recursos Humanos</h3>
+                    <p><strong>Chefe: Idalina Mabote</strong></p>
+                    <p>Gestão de pessoal, recrutamento, formação contínua e avaliação de desempenho.</p>
+                    <span class="card-link">Saber mais →</span>
+                </div>
+            </div>
+
+            <!-- Repartição 3 - Administração e Planificação -->
+            <div class="reparticao-card" data-reparticao="administracao-planificacao">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-content">
+                    <h3>Repartição de Administração e Planificação</h3>
+                    <p><strong>Chefe: Teodomiro</strong></p>
+                    <p>Planeamento estratégico, orçamento, finanças, matrículas e estatísticas 3/3.</p>
+                    <span class="card-link">Saber mais →</span>
+                </div>
+            </div>
+
+            <!-- Repartição 4 - Ensino Profissional -->
+            <div class="reparticao-card" data-reparticao="ensino-profissional">
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="card-content">
+                    <h3>Repartição de Ensino Profissional e Tecnologias</h3>
+                    <p><strong>Chefe: Stelio</strong></p>
+                    <p>Formação profissional, cursos técnicos, integração tecnológica e laboratórios.</p>
+                    <span class="card-link">Saber mais →</span>
+                </div>
+            </div>
+
+            <!-- Repartição 5 - Juventude e Cultura -->
+            <div class="reparticao-card" data-reparticao="juventude-cultura">
+                <div class="card-icon"><i class="fas fa-music"></i></div>
+                <div class="card-content">
+                    <h3>Repartição de Juventude e Cultura</h3>
+                    <p><strong>Chefe: Antonio Jose Mawelele</strong></p>
+                    <p>Programas juvenis, actividades culturais, desporto escolar e voluntariado.</p>
+                    <span class="card-link">Saber mais →</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- UGEA e SIC -->
+        <div class="special-section">
+            <h3>Unidades de Apoio Institucional</h3>
+            <div class="special-grid">
+                <div class="special-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>UGEA - Unidade de Gestão de Aquisições</h4>
+                    <p>Responsável por todas as aquisições, compras públicas, gestão de contratos e processos licitatórios da instituição, garantindo transparência e eficiência.</p>
+                    <small><strong>Email:</strong> ugea@sdejt-manhica.gov.mz</small>
+                </div>
+                <div class="special-card">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h4>SIC - Sector de Inspecção e Jurídico</h4>
+                    <p>Assessoria jurídica, análise de processos disciplinares, elaboração de pareceres, representação legal e inspecção escolar.</p>
+                    <small><strong>Email:</strong> juridico@sdejt-manhica.gov.mz</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL PARA DETALHES DAS REPARTIÇÕES -->
+<div id="reparticaoModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Repartição</h3>
+            <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<!-- ANÚNCIOS 2026 -->
+<section id="anuncios" class="bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Anúncios e Comunicados 2026</h2>
+            <p>Fique por dentro das novidades do SDEJT Manhiça</p>
+        </div>
+        <div class="anuncios-container" id="anunciosContainer"></div>
+    </div>
+</section>
+
+<!-- CALENDÁRIO DE MATRÍCULAS PESD -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Calendário de Matrículas PESD 2026</h2>
+            <p>Matrículas, Planificação e Estatísticas 3/3 - Repartição de Administração e Planificação</p>
+        </div>
+        <div class="calendar-grid">
+            <div class="calendar-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Janeiro 2026</h4>
+                <p>Matrículas PESD - 1ª Fase</p>
+                <small>15 a 31 de Janeiro</small>
+            </div>
+            <div class="calendar-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Fevereiro 2026</h4>
+                <p>Matrículas PESD - 2ª Fase</p>
+                <small>1 a 15 de Fevereiro</small>
+            </div>
+            <div class="calendar-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Julho 2026</h4>
+                <p>Matrículas PESD - 3ª Fase</p>
+                <small>1 a 15 de Julho</small>
+            </div>
+            <div class="calendar-card">
+                <i class="fas fa-chart-pie"></i>
+                <h4>Estatísticas 3/3</h4>
+                <p>Planificação e levantamento estatístico</p>
+                <small>Coordenado pela Repartição de Administração e Planificação</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contact" class="bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contacto e Localização</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Informações de Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>SDEJT - Manhiça, Rua 1008, Vila Municipal, Manhiça</strong></p>
+                <p><i class="fas fa-phone"></i> <strong>Contacto:</strong> 840257276</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> sdejtvmmanhica@gmail.com</p>
+                <p><i class="fas fa-clock"></i> <strong>Horário:</strong> Segunda a Sexta: 7h30 - 16h30</p>
+                
+                <div class="contact-details">
+                    <h3>Horário de Atendimento</h3>
+                    <p><i class="fas fa-calendar-check"></i> Atendimento geral: 8h00 - 15h00</p>
+                    <p><i class="fas fa-calendar-check"></i> UGEA (Aquisições): 9h00 - 14h00</p>
+                    <p><i class="fas fa-calendar-check"></i> SIC (Jurídico): 8h00 - 15h30</p>
+                </div>
+            </div>
+            <div>
+                <h3>Localização</h3>
+                <div class="map-placeholder">
+                    <i class="fas fa-map" style="margin-right: 8px;"></i> SDEJT - Manhiça, Rua 1008, Vila Municipal
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem;">Localizado na Rua 1008, Vila Municipal da Manhiça, Província de Maputo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>SDEJT Manhiça</h3>
+                <p>Serviço Distrital de Educação, Juventude e Tecnologia da Manhiça - Província de Maputo</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Links Rápidos</h3>
+                <a href="#home">Início</a>
+                <a href="#about">Institucional</a>
+                <a href="#reparticoes">Repartições</a>
+                <a href="#anuncios">Anúncios</a>
+                <a href="#contact">Contacto</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contactos Úteis</h3>
+                <p><i class="fas fa-phone"></i> Telefone: 840257276</p>
+                <p><i class="fas fa-envelope"></i> Email: sdejtvmmanhica@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rua 1008, Vila Municipal, Manhiça</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 Serviço Distrital de Educação, Juventude e Tecnologia da Manhiça - Todos os direitos reservados.</p>
+            <p>Lema 2026: "Educação, Investigação e Cultura: Vectores Fundamentais para o Desenvolvimento Sustentável"</p>
+        </div>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<script>
+    // Dados detalhados de cada repartição
+    const reparticoesDetalhes = {
+        'educacao-geral': {
+            titulo: 'Repartição de Educação Geral',
+            chefe: 'Professor Doutor David Zefanias Chonane',
+            descricao: 'A Repartição de Educação Geral é responsável por coordenar, supervisionar e implementar as políticas educacionais no âmbito do ensino geral no Distrito da Manhiça.',
+            organizacao: 'As escolas estão organizadas em três níveis: Primárias (1ª a 6ª classes), Básicas (1ª a 9ª classes) e Secundárias (7ª a 12ª classes).',
+            actividades: [
+                'Coordenação das 113 escolas do distrito',
+                'Supervisão das 78 escolas primárias (77 públicas e 1 privada)',
+                'Gestão das 18 escolas básicas',
+                'Coordenação das 13 escolas secundárias',
+                'Acompanhamento pedagógico e supervisão escolar',
+                'Organização de exames e avaliações',
+                'Distribuição de material didático e livros escolares'
+            ],
+            anuncios: [
+                'Matrículas abertas para o ano lectivo 2026 em todas as escolas',
+                'Calendário escolar 2026 já disponível',
+                'Formação para professores em Fevereiro de 2026'
+            ],
+            contacto: 'Chefe da Repartição: Professor Doutor David Zefanias Chonane'
+        },
+        'recursos-humanos': {
+            titulo: 'Repartição de Recursos Humanos',
+            chefe: 'Idalina Mabote',
+            descricao: 'A Repartição de Recursos Humanos é responsável pela gestão estratégica do capital humano do sector de educação no distrito da Manhiça.',
+            actividades: [
+                'Recrutamento e seleção de professores e funcionários',
+                'Gestão de processos de colocação e transferência de pessoal',
+                'Administração de salários e benefícios',
+                'Formação contínua e capacitação profissional',
+                'Avaliação de desempenho dos funcionários',
+                'Gestão de processos disciplinares',
+                'Manutenção do cadastro de funcionários'
+            ],
+            anuncios: [
+                'Concurso público para admissão de professores - Janeiro 2026',
+                'Formação obrigatória para professores - Fevereiro 2026',
+                'Actualização de dados dos funcionários'
+            ],
+            contacto: 'Chefe da Repartição: Idalina Mabote'
+        },
+        'administracao-planificacao': {
+            titulo: 'Repartição de Administração e Planificação',
+            chefe: 'Teodomiro',
+            descricao: 'A Repartição de Administração e Planificação é responsável pelo planeamento estratégico, gestão financeira e administrativa do SDEJT Manhiça.',
+            actividades: [
+                'Elaboração do plano estratégico e orçamento anual',
+                'Gestão financeira e contabilidade',
+                'Administração do patrimônio e logística',
+                'Gestão de matrículas e estatísticas 3/3',
+                'Monitoria e avaliação de indicadores',
+                'Elaboração de relatórios institucionais',
+                'Coordenação de parcerias e cooperação'
+            ],
+            anuncios: [
+                'Matrículas PESD - Janeiro, Fevereiro e Julho de 2026',
+                'Planificação e estatísticas 3/3 para 2026',
+                'Orçamento participativo disponível'
+            ],
+            contacto: 'Chefe da Repartição: Teodomiro'
+        },
+        'ensino-profissional': {
+            titulo: 'Repartição de Ensino Profissional e Tecnologias',
+            chefe: 'Stelio',
+            descricao: 'A Repartição de Ensino Profissional e Tecnologias coordena a formação técnica e profissional, promovendo a empregabilidade juvenil e a inovação tecnológica.',
+            actividades: [
+                'Coordenação de cursos técnico-profissionais',
+                'Supervisão dos 2 Institutos Médios',
+                'Implementação de programas de educação tecnológica',
+                'Gestão de laboratórios e equipamentos técnicos',
+                'Promoção de parcerias com o sector empresarial',
+                'Organização de feiras de emprego e estágios',
+                'Certificação profissional'
+            ],
+            anuncios: [
+                'Cursos profissionais 2026 - inscrições abertas',
+                'Novos cursos tecnológicos disponíveis',
+                'Parcerias para estágios profissionais'
+            ],
+            contacto: 'Chefe da Repartição: Stelio'
+        },
+        'juventude-cultura': {
+            titulo: 'Repartição de Juventude e Cultura',
+            chefe: 'Antonio Jose Mawelele',
+            descricao: 'A Repartição de Juventude e Cultura promove o desenvolvimento integral dos jovens e valorização da cultura local no Distrito da Manhiça.',
+            actividades: [
+                'Implementação de políticas de juventude',
+                'Promoção de actividades culturais e artísticas',
+                'Coordenação do desporto escolar',
+                'Gestão de programas de empreendedorismo jovem',
+                'Organização de feiras e festivais juvenis',
+                'Apoio a associações juvenis e grupos culturais',
+                'Promoção do voluntariado jovem'
+            ],
+            anuncios: [
+                'Comemorações do 1 de Junho - Dia da Criança',
+                'Comemorações do 16 de Junho - Dia da África',
+                'Festival da Juventude Manhiça 2026'
+            ],
+            contacto: 'Chefe da Repartição: Antonio Jose Mawelele'
+        }
+    };
+
+    // Anúncios 2026
+    const anuncios = [
+        { title: "Comemoração do 1 de Junho - Dia Internacional da Criança", date: "1 de Junho de 2026", content: "O SDEJT Manhiça prepara celebrações especiais para o Dia da Criança em todas as escolas do distrito.", more: "As actividades incluem jogos, apresentações culturais e distribuição de material escolar. Todas as escolas estão convidadas a participar." },
+        { title: "Comemoração do 16 de Junho - Dia da África", date: "16 de Junho de 2026", content: "Celebração do Dia da África com actividades culturais e educativas nas escolas do distrito.", more: "Serão realizados desfiles, apresentações de dança tradicional e palestras sobre a história e cultura africana." },
+        { title: "Mensagem de Sensibilização - Combate ao Abuso Sexual e Drogas", date: "Janeiro a Dezembro de 2026", content: "Campanha permanente de sensibilização sobre prevenção do abuso sexual e combate ao consumo de drogas nas escolas.", more: "Palestras regulares, distribuição de materiais informativos e criação de gabinetes de apoio nas escolas para vítimas." },
+        { title: "Matrículas PESD - Janeiro 2026", date: "Janeiro de 2026", content: "Abertura do processo de matrículas PESD para o primeiro trimestre de 2026.", more: "As matrículas decorrem de 15 a 31 de Janeiro na Repartição de Administração e Planificação - SDEJT Manhiça, Rua 1008." },
+        { title: "Matrículas PESD - Fevereiro 2026", date: "Fevereiro de 2026", content: "Segunda fase do processo de matrículas PESD para o ano lectivo 2026.", more: "Período de matrículas: 1 a 15 de Fevereiro. Trazer os documentos necessários." },
+        { title: "Matrículas PESD - Julho 2026", date: "Julho de 2026", content: "Terceira fase do processo de matrículas PESD para o segundo semestre de 2026.", more: "Matrículas abertas de 1 a 15 de Julho na sede do SDEJT Manhiça." },
+        { title: "Estatísticas 3/3 - Planificação Escolar", date: "2026", content: "A Repartição de Administração e Planificação coordena o levantamento estatístico 3/3 das escolas do distrito.", more: "Todas as escolas devem submeter os dados estatísticos até ao final de cada trimestre." },
+        { title: "Formação sobre Prevenção do Abuso Sexual", date: "15 de Março de 2026", content: "Workshop de capacitação para professores sobre identificação e prevenção do abuso sexual infantil.", more: "Inscrições abertas na Repartição de Recursos Humanos. Participação obrigatória para todos os directores escolares." },
+        { title: "Campanha Jovem sem Drogas", date: "Abril de 2026", content: "Lançamento da campanha de prevenção ao consumo de drogas nas escolas secundárias do distrito.", more: "Palestras, debates e actividades desportivas promovendo um estilo de vida saudável." }
+    ];
+
+    // Carregar anúncios
+    function carregarAnuncios() {
+        const container = document.getElementById('anunciosContainer');
+        if (!container) return;
+
+        anuncios.forEach((anuncio, index) => {
+            const anuncioDiv = document.createElement('div');
+            anuncioDiv.className = 'anuncio';
+            anuncioDiv.innerHTML = `
+                <h4>${anuncio.title}</h4>
+                <div class="anuncio-date"><i class="far fa-calendar-alt"></i> ${anuncio.date}</div>
+                <p>${anuncio.content}</p>
+                <div id="more-${index}" class="hidden"><p>${anuncio.more}</p></div>
+                <button class="ver-mais" data-id="more-${index}">Ver mais</button>
+            `;
+            container.appendChild(anuncioDiv);
+        });
+
+        document.querySelectorAll('.ver-mais').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-id');
+                const targetDiv = document.getElementById(targetId);
+                if (targetDiv.classList.contains('hidden')) {
+                    targetDiv.classList.remove('hidden');
+                    this.textContent = 'Ver menos';
+                } else {
+                    targetDiv.classList.add('hidden');
+                    this.textContent = 'Ver mais';
+                }
+            });
+        });
+    }
+
+    // Modal para mostrar detalhes das repartições
+    function abrirModal(reparticaoId) {
+        const dados = reparticoesDetalhes[reparticaoId];
+        if (!dados) return;
+
+        const modal = document.getElementById('reparticaoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        modalTitle.textContent = dados.titulo;
+
+        let actividadesHtml = '<ul>';
+        dados.actividades.forEach(act => {
+            actividadesHtml += `<li><i class="fas fa-check-circle" style="color: #e67e22; margin-right: 8px;"></i> ${act}</li>`;
+        });
+        actividadesHtml += '</ul>';
+
+        let anunciosHtml = '<ul>';
+        dados.anuncios.forEach(anun => {
+            anunciosHtml += `<li><i class="fas fa-bullhorn" style="color: #e67e22; margin-right: 8px;"></i> ${anun}</li>`;
+        });
+        anunciosHtml += '</ul>';
+
+        let organizacaoHtml = '';
+        if (dados.organizacao) {
+            organizacaoHtml = `<h4><i class="fas fa-building"></i> Organização das Escolas</h4>
+            <p>${dados.organizacao}</p>`;
+        }
+
+        modalBody.innerHTML = `
+            <p><strong><i class="fas fa-user"></i> Chefe da Repartição:</strong> ${dados.chefe}</p>
+            
+            <h4><i class="fas fa-info-circle"></i> Descrição Institucional</h4>
+            <p>${dados.descricao}</p>
+            
+            ${organizacaoHtml}
+            
+            <h4><i class="fas fa-tasks"></i> Principais Actividades</h4>
+            ${actividadesHtml}
+            
+            <h4><i class="fas fa-bullhorn"></i> Anúncios Importantes</h4>
+            ${anunciosHtml}
+            
+            <h4><i class="fas fa-address-card"></i> Contacto</h4>
+            <p>${dados.contacto}</p>
+            
+            <h4><i class="fas fa-map-marker-alt"></i> Localização</h4>
+            <p><strong>SDEJT - Manhiça, Rua 1008, Vila Municipal, Manhiça</strong><br>
+            Email: sdejtvmmanhica@gmail.com | Contacto: 840257276</p>
+        `;
+
+        modal.classList.add('active');
+    }
+
+    function fecharModal() {
+        const modal = document.getElementById('reparticaoModal');
+        modal.classList.remove('active');
+    }
+
+    // Inicializar eventos das cards
+    function initReparticaoCards() {
+        const cards = document.querySelectorAll('.reparticao-card');
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('card-link') || e.target.parentElement.classList.contains('card-link') || e.target.closest('.card-link')) {
+                    const reparticaoId = this.getAttribute('data-reparticao');
+                    abrirModal(reparticaoId);
+                }
+            });
+        });
+    }
+
+    // Smooth scroll
+    function initSmoothScroll() {
+        document.querySelectorAll('nav a, .footer-col a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                        if (window.innerWidth <= 768) {
+                            document.getElementById('mainNav')?.classList.remove('active');
+                            const menuBtn = document.getElementById('mobileMenuBtn');
+                            const icon = menuBtn?.querySelector('i');
+                            if (icon) {
+                                icon.classList.remove('fa-times');
+                                icon.classList.add('fa-bars');
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    // Back to top
+    function initBackToTop() {
+        const btn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Menu mobile
+    function initMobileMenu() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mainNav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Scroll spy
+    function initScrollSpy() {
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            fecharModal();
+        }
+    });
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', () => {
+        carregarAnuncios();
+        initSmoothScroll();
+        initBackToTop();
+        initMobileMenu();
+        initScrollSpy();
+        initReparticaoCards();
+
+        const closeBtn = document.getElementById('closeModal');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', fecharModal);
+        }
+
+        const modal = document.getElementById('reparticaoModal');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
