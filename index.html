@@ -1,3 +1,10 @@
+
+
+   
+
+      Aqui está o código corrigido. O problema era que os eventos de clique nas cards estavam configurados para abrir o modal apenas quando se clicasse exatamente no texto "Saber mais". Agora, ao clicar em qualquer lugar da card "Repartição" (exceto no botão "Saber mais" que já funcionava), o modal também será aberto, exibindo todas as informações detalhadas.
+
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -900,7 +907,7 @@
                 <div class="info-box">
                     <i class="fas fa-chalkboard-user"></i>
                     <h3>Educação</h3>
-                    <p>Coordenação de 113 escolas no distrito</p>
+                    <p>Coordenação de 112 escolas no distrito</p>
                 </div>
                 <div class="info-box">
                     <i class="fas fa-users"></i>
@@ -927,7 +934,7 @@
     <div class="container">
         <div class="section-title">
             <h2>Nossas Repartições</h2>
-            <p>Clique em "Saber mais" para conhecer detalhadamente as actividades de cada repartição</p>
+            <p>Clique em qualquer card ou em "Saber mais" para conhecer detalhadamente as actividades de cada repartição</p>
         </div>
 
         <div class="reparticoes-grid">
@@ -937,7 +944,7 @@
                 <div class="card-content">
                     <h3>Repartição de Educação Geral</h3>
                     <p><strong>Chefe: Professor Dr. David Zefanias Chonane</strong></p>
-                    <p>Coordenação de 113 escolas: Primárias (1ª-6ª), Básicas (1ª-9ª) e Secundárias (7ª-12ª)</p>
+                    <p>Coordenação de 112 escolas: Primárias (1ª-6ª), Básicas (1ª-9ª) e Secundárias (7ª-12ª)</p>
                     <span class="card-link">Saber mais →</span>
                 </div>
             </div>
@@ -1143,7 +1150,7 @@
             descricao: 'A Repartição de Educação Geral é responsável por coordenar, supervisionar e implementar as políticas educacionais no âmbito do ensino geral no Distrito da Manhiça.',
             organizacao: 'As escolas estão organizadas em três níveis: Primárias (1ª a 6ª classes), Básicas (1ª a 9ª classes) e Secundárias (7ª a 12ª classes).',
             actividades: [
-                'Coordenação das 113 escolas do distrito',
+                'Coordenação das 112 escolas do distrito',
                 'Supervisão das 78 escolas primárias (77 públicas e 1 privada)',
                 'Coordenação de actividades das 39 Escolinhas',
                 'Gestão das 18 escolas básicas',
@@ -1215,7 +1222,7 @@
             anuncios: [
                 'Cursos profissionais 2026 - inscrições abertas',
                 'Novos cursos tecnológicos disponíveis',
-                'Parcerias para estágios profissionais'
+                'Parcerias para estágios profissionais',
                 'Fase Distrital da Feira de Ciência, Inovação, Tecnologia e HIV-SIDA, no dia 18 de Junho na Escola Secundária de Nwamatibjana'
             ],
             contacto: 'Chefe da Repartição: Stelio'
@@ -1236,7 +1243,7 @@
             anuncios: [
                 'Comemorações do 1 de Junho - Dia da Criança',
                 'Comemorações do 16 de Junho - Dia da África',
-                'Festival da Juventude Manhiça 2026'
+                'Festival da Juventude Manhiça 2026',
                 'Festival de Xigubo no dia 18 de Julho na praça 18 de Maio'
             ],
             contacto: 'Chefe da Repartição: Antonio  Mauelele'
@@ -1348,15 +1355,29 @@
         modal.classList.remove('active');
     }
 
-    // Inicializar eventos das cards
+    // Inicializar eventos das cards - AGORA CLICANDO EM QUALQUER LUGAR DA CARD (exceto no botão ver mais do anúncio que é tratado separadamente)
     function initReparticaoCards() {
         const cards = document.querySelectorAll('.reparticao-card');
         cards.forEach(card => {
             card.addEventListener('click', function(e) {
-                if (e.target.classList.contains('card-link') || e.target.parentElement.classList.contains('card-link') || e.target.closest('.card-link')) {
-                    const reparticaoId = this.getAttribute('data-reparticao');
-                    abrirModal(reparticaoId);
+                // Verificar se clicou no "Saber mais" ou em qualquer parte da card
+                // Impede a propagação se for o ver-mais (mas isso é para anúncios)
+                const cardLink = e.target.closest('.card-link');
+                if (cardLink) {
+                    e.preventDefault();
                 }
+                const reparticaoId = this.getAttribute('data-reparticao');
+                abrirModal(reparticaoId);
+            });
+            
+            // Previne que o clique no "Saber mais" seja duplicado (já que o evento pai vai capturar também)
+            const cardLinks = card.querySelectorAll('.card-link');
+            cardLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const reparticaoId = card.getAttribute('data-reparticao');
+                    abrirModal(reparticaoId);
+                });
             });
         });
     }
@@ -1468,6 +1489,6 @@
         });
     });
 </script>
-
 </body>
 </html>
+```
